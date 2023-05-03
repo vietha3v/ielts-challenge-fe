@@ -1,6 +1,11 @@
 {
   "name": "ielts-challenge-fe",
   "version": "0.1.0",
+  "author": {
+    "name": "VieHa",
+    "email": "vietha.3v@gmail.com",
+    "url": "https://github.com/vietha3v"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
