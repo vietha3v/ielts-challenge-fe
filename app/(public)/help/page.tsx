@@ -20,6 +20,7 @@ export default function HelpPage() {
       {questions?.length &&
         questions.map((o, i) => (
           <div
+            key={i}
             tabIndex={i}
             className="collapse collapse-plus rounded-lg border border-base-300 bg-base-200"
           >
