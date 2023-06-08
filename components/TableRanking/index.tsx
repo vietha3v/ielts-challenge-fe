@@ -14,7 +14,8 @@ export default function TableRanking() {
     () =>
       new Array(5)
         .fill(0)
-        .map(() => ({
+        .map((o, i) => ({
+          key: i,
           name: faker.person.fullName(),
           avatar: faker.internet.avatar(),
           band: Math.floor(Math.random() * 9),
@@ -26,7 +27,7 @@ export default function TableRanking() {
 
   useEffect(() => {
     setData(fakeData());
-  }, []);
+  }, [fakeData]);
 
   return (
     <div className="flex flex-row w-full justify-center">
@@ -43,7 +44,7 @@ export default function TableRanking() {
         <tbody>
           {data?.length &&
             data.map((o, i) => (
-              <tr className="hover:bg-orange-200">
+              <tr key={i} className="hover:bg-orange-200">
                 <th>{i + 1}</th>
                 <td>
                   <div className="avatar">

@@ -24,17 +24,19 @@ export default function SearchChallenge() {
         <div className="form-control w-full max-w-xs col-span-1 justify-space-between">
           <label className="label"> Kĩ năng </label>
           <select className="select select-sm">
-            {skills?.map((o) => (
-              <option key={o?.value} value={o?.value} label={o?.label} />
-            ))}
+            {skills?.length &&
+              skills?.map((o) => (
+                <option key={o?.value} value={o?.value} label={o?.label} />
+              ))}
           </select>
         </div>
         <div className="form-control w-full max-w-xs col-span-1 justify-start">
           <label className="label"> Trình độ </label>
           <select className="select select-sm">
-            {levels?.map((o) => (
-              <option key={o?.value} value={o?.value} label={o?.label} />
-            ))}
+            {levels?.length &&
+              levels?.map((o) => (
+                <option key={o?.value} value={o?.value} label={o?.label} />
+              ))}
           </select>
         </div>
         <div className="form-control w-full max-w-xs col-span-1 justify-start">

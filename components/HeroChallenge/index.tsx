@@ -1,7 +1,7 @@
 "use client";
 
 import { faker } from "@faker-js/faker";
-import { useCallback, useEffect, useState } from "react";
+import { CSSProperties, useCallback, useEffect, useState } from "react";
 
 export default function HeroChallenge() {
   const [banner, setBanner] = useState("");
@@ -17,7 +17,7 @@ export default function HeroChallenge() {
 
   useEffect(() => {
     setBanner(fakeData);
-  }, []);
+  }, [fakeData]);
   return (
     <div className="card w-100 bg-base-100 shadow-xl image-full">
       <figure>
@@ -29,25 +29,25 @@ export default function HeroChallenge() {
           <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
             <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
               <span className="countdown font-mono text-5xl">
-                <span style={{ "--value": 1 }}></span>
+                <span style={{ "--value": 1 } as CSSProperties}></span>
               </span>
               days
             </div>
             <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
               <span className="countdown font-mono text-5xl">
-                <span style={{ "--value": 10 }}></span>
+                <span style={{ "--value": 10 } as CSSProperties}></span>
               </span>
               hours
             </div>
             <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
               <span className="countdown font-mono text-5xl">
-                <span style={{ "--value": 24 }}></span>
+                <span style={{ "--value": 24 } as CSSProperties}></span>
               </span>
               min
             </div>
             <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
               <span className="countdown font-mono text-5xl">
-                <span style={{ "--value": 50 }}></span>
+                <span style={{ "--value": 50 } as CSSProperties}></span>
               </span>
               sec
             </div>

@@ -1,11 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 export default function ToggleFullscreen() {
-  const [isFullScreen, setIsFullScreen] = useState(
-    document ? !!document.fullscreenElement : false
-  );
-  const toggleFullScreen = () => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const toggleFullScreen = useCallback(() => {
     if (document.fullscreenElement) {
       document.exitFullscreen();
       setIsFullScreen(false);
@@ -13,7 +11,7 @@ export default function ToggleFullscreen() {
       document.body.requestFullscreen();
       setIsFullScreen(true);
     }
-  };
+  }, []);
 
   useEffect(() => {
     document.body.addEventListener("fullscreenchange", () => {

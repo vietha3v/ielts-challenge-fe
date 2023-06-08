@@ -1,4 +1,5 @@
 "use client";
+import { CSSProperties } from "react";
 
 export interface CardChallengeItemProps {
   title?: string;
@@ -40,7 +41,9 @@ export default function CardChallengeItem({
             <div className="stat-figure text-secondary">
               <div
                 className="radial-progress bg-primary text-primary-content border-4 border-primary"
-                style={{ "--value": data?.buy ? data?.progress : 0 }}
+                style={
+                  { "--value": data?.buy ? data?.progress : 0 } as CSSProperties
+                }
               >
                 {data?.buy ? `${data?.progress} %` : `${data?.coin}$`}
               </div>

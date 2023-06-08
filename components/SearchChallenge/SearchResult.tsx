@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 
 export default function SearchResult() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<any>();
   const [data, setData] = useState<CardChallengeItemProps>({});
   const pathname = usePathname();
   const mine = pathname === "/challenge/me";
@@ -37,15 +37,22 @@ export default function SearchResult() {
 
   useEffect(() => {
     setList(() =>
-      new Array(Math.floor(Math.random() * 100)).fill(0)?.map(() => fakeData())
+      new Array(Math.floor(Math.random() * 100) + 1)
+        .fill(0)
+        ?.map(() => fakeData())
     );
-  }, []);
+  }, [fakeData]);
 
-  if (!list.length) return null;
+  if (!list?.length) return null;
   return (
     <div className="grid grid-cols-5 gap-4 my-4 overflow-y-auto">
       {list?.length &&
-        list.map((o, i) => <CardChallengeItem data={o} key={i} />)}
+        list.map(
+          (
+            o: CardChallengeItemProps | undefined,
+            i: React.Key | null | undefined
+          ) => <CardChallengeItem data={o} key={i} />
+        )}
     </div>
   );
 }
