@@ -1,6 +1,6 @@
 "use client";
 import { CSSProperties } from "react";
-
+import Image from "next/legacy/image";
 export interface CardChallengeItemProps {
   title?: string;
   imageUrl?: string;
@@ -25,7 +25,12 @@ export default function CardChallengeItem({
       data-tip={data?.description}
     >
       <figure>
-        <img src={data?.imageUrl} alt={data?.title} className="object-cover" />
+        <Image
+          src={data?.imageUrl ?? ""}
+          alt={data?.title}
+          className="object-cover"
+          layout="fill"
+        />
       </figure>
       <div className="card-body p-4 overflow-hidden">
         <form className="form">

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { faker } from "@faker-js/faker";
+import Image from "next/legacy/image";
 
 export default function YourInfo() {
   return (
@@ -12,7 +13,11 @@ export default function YourInfo() {
       >
         <div className="avatar online">
           <div className="w-16 rounded-lg">
-            <img src={faker.internet.avatar()} />
+            <Image
+              src={faker.internet.avatar()}
+              alt={"Your avatar"}
+              layout="fill"
+            />
           </div>
         </div>
         <div className="group/edit group-hover/item:visible flex flex-col w-full overflow-x-hidden">

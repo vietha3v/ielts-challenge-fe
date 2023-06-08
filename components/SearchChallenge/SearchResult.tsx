@@ -32,7 +32,7 @@ export default function SearchResult() {
       buy: mine ? true : faker.datatype.boolean(),
       coin: faker.number.int(10),
     }),
-    []
+    [mine]
   );
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function SearchResult() {
 
   if (!list?.length) return null;
   return (
-    <div className="grid grid-cols-5 gap-4 my-4 overflow-y-auto">
+    <div className="grid lg:grid-cols-5 sm:grid-cols-2 gap-4 my-4 overflow-y-auto">
       {list?.length &&
         list.map(
           (

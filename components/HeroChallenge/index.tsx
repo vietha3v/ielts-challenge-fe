@@ -1,6 +1,7 @@
 "use client";
 
 import { faker } from "@faker-js/faker";
+import Image from "next/legacy/image";
 import { CSSProperties, useCallback, useEffect, useState } from "react";
 
 export default function HeroChallenge() {
@@ -21,7 +22,7 @@ export default function HeroChallenge() {
   return (
     <div className="card w-100 bg-base-100 shadow-xl image-full">
       <figure>
-        <img src={banner} alt="Monthly Challenge" />
+        <Image src={banner} alt="Monthly Challenge" layout="fill" />
       </figure>
       <div className="card-body">
         <h2 className="card-title self-center">Thử thách tháng 6!</h2>

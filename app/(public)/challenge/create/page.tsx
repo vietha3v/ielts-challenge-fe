@@ -1,3 +1,4 @@
+import Image from "next/legacy/image";
 import Link from "next/link";
 import React from "react";
 
@@ -72,7 +73,9 @@ export default function CreateChallenge() {
             key={Math.random()}
             className="card w-full h-300 bg-base-100 shadow-xl image-full disabled"
           >
-            <figure>{/* <img src="#" alt="Writing" /> */}</figure>
+            <figure>
+              <Image src="#" alt="Writing" layout="fill" />
+            </figure>
             <div className="card-body flex flex-col justify-between">
               <h2 className="card-title">{o?.title}</h2>
               <div className="max-h-20 text-ellipsis overflow-hidden">

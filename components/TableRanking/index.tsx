@@ -1,5 +1,6 @@
 "use client";
 import { faker } from "@faker-js/faker";
+import Image from "next/legacy/image";
 import React, { useCallback, useEffect, useState } from "react";
 
 interface RankingItemProps {
@@ -49,7 +50,11 @@ export default function TableRanking() {
                 <td>
                   <div className="avatar">
                     <div className="w-8 rounded-full">
-                      <img src={o?.avatar} />
+                      <Image
+                        src={o?.avatar ?? ""}
+                        alt={o?.name}
+                        layout="fill"
+                      />
                     </div>
                   </div>
                 </td>
