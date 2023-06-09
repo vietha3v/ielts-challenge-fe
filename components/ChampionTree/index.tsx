@@ -1,5 +1,7 @@
 "use client";
 
+import { faker } from "@faker-js/faker";
+
 interface ChampionTreeProps {
   name?: string;
   band?: number;
@@ -130,25 +132,24 @@ const winners = {
   ],
 };
 
+const fakeUser = () => ({
+  name: faker.person.fullName(),
+  band: 6.5,
+  point: faker.number.int({ min: 120, max: 400 }),
+  isWinner: false,
+  round: 6,
+});
+
 export default function ChampionTree() {
-  const generateTableTree = (data: ChampionTreeProps[]) => {
-    if (!data?.length) return null;
+  const generateTreeItem = (data: ChampionTreeProps) => {
     return (
-      <div className={`grid grid-cols-${data?.length} gap-4 mt-4`}>
-        {data?.map((o, i) => (
-          <>
-            <div
-              key={i}
-              className={`${
-                o?.isWinner ? "bg-yellow-500" : "bg-gray-400"
-              }  rounded-lg p-2 flex flex-row whitespace-nowrap min-w-[200px] max-w-sm justify-center text-center self-center gap-4`}
-            >
-              {o?.name}
-              <div className="badge border-none bg-red-600">{o?.point}</div>
-            </div>
-            <div>{o?.items?.length && generateTableTree(o?.items)}</div>
-          </>
-        ))}
+      <div
+        className={`${
+          data?.isWinner ? "bg-yellow-500" : "bg-gray-400"
+        } col-span-1  rounded-lg p-2 flex flex-row whitespace-nowrap text-ellipsis overflow-hidden w-[250px] justify-between text-center self-center gap-4`}
+      >
+        {data?.name}
+        <div className="badge border-none bg-red-600">{data?.point}</div>
       </div>
     );
   };
@@ -178,11 +179,54 @@ export default function ChampionTree() {
               <div className="badge border-none bg-red-600">{data?.point}</div>
             </div>
           </div>
-          {data?.items?.length && generateTableTree(data?.items)}
         </>
       );
     return null;
   };
 
-  return generateChampionerTree(winners);
+  return (
+    <>
+      {generateChampionerTree(winners)}
+      <div className="flex flex-row justify-evenly gap-4 mt-4">
+        {generateTreeItem(winners?.items?.[0])}
+        {generateTreeItem(winners?.items?.[1])}
+      </div>
+      <div className="flex flex-row justify-evenly gap-4 mt-4">
+        {generateTreeItem(winners?.items?.[0]?.items?.[0])}
+        {generateTreeItem(winners?.items?.[0]?.items?.[1])}
+        {generateTreeItem(winners?.items?.[1]?.items?.[0])}
+        {generateTreeItem(winners?.items?.[1]?.items?.[1])}
+      </div>
+      <div className="flex flex-row justify-evenly gap-4 mt-4">
+        <div className="flex flex-col gap-2 mt-4">
+          <span className="text-center"> Group A </span>
+          {generateTreeItem(winners?.items?.[0]?.items?.[0])}
+          {generateTreeItem(fakeUser())}
+          {generateTreeItem(fakeUser())}
+          {generateTreeItem(fakeUser())}
+        </div>
+        <div className="flex flex-col gap-2 mt-4">
+          <span className="text-center"> Group A </span>
+          {generateTreeItem(fakeUser())}
+          {generateTreeItem(fakeUser())}
+          {generateTreeItem(winners?.items?.[0]?.items?.[1]?.items?.[0])}
+          {generateTreeItem(fakeUser())}
+        </div>
+        <div className="flex flex-col gap-2 mt-4">
+          <span className="text-center"> Group A </span>
+          {generateTreeItem(winners?.items?.[1]?.items?.[0])}
+          {generateTreeItem(fakeUser())}
+          {generateTreeItem(fakeUser())}
+          {generateTreeItem(fakeUser())}
+        </div>
+        <div className="flex flex-col gap-2 mt-4">
+          <span className="text-center"> Group A </span>
+          {generateTreeItem(fakeUser())}
+          {generateTreeItem(fakeUser())}
+          {generateTreeItem(winners?.items?.[1]?.items?.[1]?.items?.[0])}
+          {generateTreeItem(fakeUser())}
+        </div>
+      </div>
+    </>
+  );
 }
