@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import { faker } from "@faker-js/faker";
 import Link from "next/link";
 import React from "react";
 
@@ -19,13 +19,13 @@ const ChallengeTypes = [
         tuần qua
       </span>
     ),
-    image: "#",
+    image: faker.internet.avatar(),
   },
   {
     href: "/challenge/create/grammar",
     title: "Ngữ pháp",
     content: <p>10 đứa làm ngữ pháp sai đến 9 câu :3.</p>,
-    image: "#",
+    image: faker.internet.avatar(),
   },
   {
     href: "/challenge/create/listening",
@@ -36,13 +36,13 @@ const ChallengeTypes = [
         kéo người tham gia.
       </p>
     ),
-    image: "#",
+    image: faker.internet.avatar(),
   },
   {
     href: "/challenge/create/speaking",
     title: "Nói",
     content: <p>Thử thách này tạo cho những người hướng nội :V </p>,
-    image: "#",
+    image: faker.internet.avatar(),
   },
   {
     href: "/challenge/create/reading",
@@ -50,7 +50,7 @@ const ChallengeTypes = [
     content: (
       <p>Đọc sách, đọc báo hàng ngày tăng vốn kiến thức, phong phú từ vựng.</p>
     ),
-    image: "#",
+    image: faker.internet.avatar(),
   },
   {
     href: "/challenge/create/writing",
@@ -61,7 +61,7 @@ const ChallengeTypes = [
         tham gia
       </p>
     ),
-    image: "#",
+    image: faker.internet.avatar(),
   },
 ];
 export default function CreateChallenge() {
@@ -74,7 +74,7 @@ export default function CreateChallenge() {
             className="card w-full h-300 bg-base-100 shadow-xl image-full disabled"
           >
             <figure>
-              <Image src="#" alt="Writing" layout="fill" />
+              {/* <Image src={o?.image} alt={o?.title} layout="fill" /> */}
             </figure>
             <div className="card-body flex flex-col justify-between">
               <h2 className="card-title">{o?.title}</h2>

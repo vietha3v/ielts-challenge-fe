@@ -2,8 +2,8 @@
 import HeroChallenge from "@/components/HeroChallenge";
 import Tabs from "@/components/Tabs";
 import { useSearchParams } from "next/navigation";
-import TableRanking from "@/components/TableRanking";
 import GlobalChatting from "@/components/GlobalChatting";
+import Honors from "@/components/Honors";
 
 export default function HomePage() {
   const keyActive = useSearchParams().get("r");
@@ -14,7 +14,7 @@ export default function HomePage() {
       case "community":
         return <GlobalChatting />;
       case "honors":
-        return <TableRanking />;
+        return <Honors />;
       default:
         return <GlobalChatting />;
     }

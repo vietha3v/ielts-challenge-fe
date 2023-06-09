@@ -1,11 +1,21 @@
 "use client";
 
 import { faker } from "@faker-js/faker";
+import { intervalToDuration } from "date-fns";
 import Image from "next/legacy/image";
-import { CSSProperties, useCallback, useEffect, useState } from "react";
+import {
+  CSSProperties,
+  memo,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-export default function HeroChallenge() {
+const EndEvent = new Date(2023, 6, 30, 23, 59, 59);
+const HeroChallenge = () => {
   const [banner, setBanner] = useState("");
+  const [countdown, setCountDown] = useState<Duration>();
   const fakeData = useCallback(
     () =>
       faker.image.urlLoremFlickr({
@@ -17,8 +27,21 @@ export default function HeroChallenge() {
   );
 
   useEffect(() => {
+    const cdInterval = setInterval(() => {
+      setCountDown(
+        intervalToDuration({
+          start: EndEvent,
+          end: new Date(),
+        })
+      );
+    }, 1000);
+    return () => clearInterval(cdInterval);
+  }, []);
+
+  useEffect(() => {
     setBanner(fakeData);
   }, [fakeData]);
+
   return (
     <div className="card w-100 bg-base-100 shadow-xl image-full">
       <figure>
@@ -30,27 +53,36 @@ export default function HeroChallenge() {
           <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
             <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
               <span className="countdown font-mono text-5xl">
-                <span style={{ "--value": 1 } as CSSProperties}></span>
+                <span
+                  id="counterElement"
+                  style={{ "--value": countdown?.days } as CSSProperties}
+                ></span>
               </span>
-              days
+              ngày
             </div>
             <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
               <span className="countdown font-mono text-5xl">
-                <span style={{ "--value": 10 } as CSSProperties}></span>
+                <span
+                  style={{ "--value": countdown?.hours } as CSSProperties}
+                ></span>
               </span>
-              hours
+              giờ
             </div>
             <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
               <span className="countdown font-mono text-5xl">
-                <span style={{ "--value": 24 } as CSSProperties}></span>
+                <span
+                  style={{ "--value": countdown?.minutes } as CSSProperties}
+                ></span>
               </span>
-              min
+              phút
             </div>
             <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
               <span className="countdown font-mono text-5xl">
-                <span style={{ "--value": 50 } as CSSProperties}></span>
+                <span
+                  style={{ "--value": countdown?.seconds } as CSSProperties}
+                ></span>
               </span>
-              sec
+              giây
             </div>
           </div>
         </div>
@@ -63,4 +95,6 @@ export default function HeroChallenge() {
       </div>
     </div>
   );
-}
+};
+
+export default memo(HeroChallenge);
