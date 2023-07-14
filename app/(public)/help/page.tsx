@@ -3,15 +3,18 @@ import React from "react";
 const questions = [
   {
     title: "IELTS Challenge là gì?",
-    content: "Là dự án học tập IELTS qua những thử thách bla bla",
+    content:
+      "IELTS Challenge là platform học tập, giúp học sinh tích luỹ, tôi luyện, hoàn thiện kỹ năng IELTS nhanh hơn, vui hơn thông qua các thử thách học tập.",
   },
   {
-    title: "Tạo thử thách trên IELTS Challenge như thế nào??",
-    content: "Là dự án học tập IELTS qua những thử thách bla bla",
+    title: "Sứ mệnh phát triển của IELTS Challenge?",
+    content:
+      "<p>Số hoá 100% các chương trình học, xây dựng dựa trên các kỹ thuật, phương pháp học tập, công nghệ giáo dục tiên tiến.</p> </p>Tạo ra sự công bằng: dễ dàng tiếp cận từ mọi nơi, dành cho mọi người với chi phí thấp. </p><p> Vượt ra khỏi định kiến IELTS chỉ là chứng chỉ, biến việc học tiếng anh trở thành quá trình tích lũy kiến thức xã hội, tiếp cận văn hoá, tri thức nhân loại. </p>",
   },
   {
-    title: "Tìm kiếm thử thách như thế nào?",
-    content: "Là dự án học tập IELTS qua những thử thách bla bla",
+    title: "IELTS Challenge xây dựng tầm nhìn",
+    content:
+      "Trở thành 1 global platform học tập hiệu quả, thông minh, phục vụ hàng tỷ người dùng",
   },
 ];
 export default function HelpPage() {
